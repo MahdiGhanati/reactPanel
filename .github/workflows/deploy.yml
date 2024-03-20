@@ -1,18 +1,25 @@
-            - name: himsoft-ftp-deploy
-  # You may pin to the exact commit or the version.
-  # uses: HimoSoft/ftp-deploy@cae2e0dea11cc2678fc3917bfc1431569a4b815e
-  uses: HimoSoft/ftp-deploy@v1.1.0
-  with:
-    # FTP host
-    host: ${{ secrets.FTP_SERVER }}
-    # FTP user
-    user: ${{ secrets.FTP_USERNAME }}
-    # FTP password
-    password: ${{ secrets.FTP_PASSWORD }}
-    # Force SSL encryption
-    forceSsl: # optional, default is false
-    # Local directory
-    localDir: build/ # optional, default is .
-    # Remote directory
-    remoteDir: public_html/react # optional, default is .
+name: 🚀 Deploy File to cPanel
+on:
+  push:
+    branches:
+      - main
+jobs:
+  FTP-Deploy-Action:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: 📂 Sync folders and files to the server
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: build/
+          remoteDir: public_html/react # optional, default is .
           
