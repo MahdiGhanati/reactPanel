@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: "12.x"
       - name: build
-        run: npm run build --if-present
+        run: npm run build
 
 
   FTP-Deploy-Action:
