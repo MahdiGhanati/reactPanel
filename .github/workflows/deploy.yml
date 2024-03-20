@@ -21,5 +21,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: build/
-          remoteDir: public_html/react # optional, default is .
+          server-dir: public_html/react # optional, default is .
           
