@@ -14,12 +14,6 @@ jobs:
         with:
           fetch-depth: 2
 
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "12.x"
-      - name: build
-        run: npm run build
-        
       - name: 📂 Sync folders and files to the server
         uses: MahdiGhanati/FTP-Deploy-Action@v4.3.5
         with:
